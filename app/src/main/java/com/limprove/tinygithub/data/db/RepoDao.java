@@ -2,12 +2,11 @@ package com.limprove.tinygithub.data.db;
 
 import androidx.paging.DataSource;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.limprove.tinygithub.data.model.Repo;
+import com.limprove.tinygithub.domain.model.Repo;
 
 import io.reactivex.Completable;
 
@@ -19,7 +18,4 @@ public interface RepoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertRepo(Repo repo);
-
-    @Delete
-    void deleteRepo(Repo repo);
 }

@@ -5,28 +5,36 @@
     <data>
         <variable
             name="repo"
-            type="com.limprove.tinygithub.data.model.Repo" />
+            type="com.limprove.tinygithub.domain.model.Repo" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/repo_name"
             android:text="@{repo.name}"
+            android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/repo_description"
-            android:text="@{repo.description}"
+            app:formatDate="@{repo.date}"
+            android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/repo_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <View
+            app:layout_constraintTop_toBottomOf="@id/repo_description"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

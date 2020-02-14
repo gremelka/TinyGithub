@@ -1,52 +1,25 @@
 package com.limprove.tinygithub.di;
 
-import android.app.Application;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import com.limprove.tinygithub.data.db.GithubDatabase;
 import com.limprove.tinygithub.data.db.RepoDao;
-import com.limprove.tinygithub.network.GithubService;
-
-import javax.inject.Singleton;
+import com.limprove.tinygithub.domain.repository.RepoRepository;
+import com.limprove.tinygithub.data.api.GithubService;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-@Module(includes = ViewModelModule.class)
+@Module
 public class AppModule {
 
-    private Application application;
-
-    public AppModule(Application application) {
-        this.application = application;
+    @Provides
+    public FirebaseUser provideFirebaseUser() {
+        return FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    @Singleton
     @Provides
-    public Application provideApplication() {
-        return application;
-    }
-
-    @Singleton
-    @Provides
-    public GithubService provideGithubService() {
-        return new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(GithubService.class);
-    }
-
-    @Singleton
-    @Provides
-    GithubDatabase provideDatabase(Application application) {
-        return GithubDatabase.getInstance(application);
-    }
-
-    @Singleton
-    @Provides
-    RepoDao provideRepoDao(GithubDatabase database) {
-        return database.repoDao();
+    public RepoRepository provideRepoRepository(RepoDao repoDao, GithubService githubService) {
+        return new RepoRepository(repoDao, githubService);
     }
 }

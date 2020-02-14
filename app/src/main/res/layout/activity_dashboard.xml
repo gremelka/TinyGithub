@@ -7,18 +7,18 @@
 
         <variable
             name="viewModel"
-            type="com.limprove.tinygithub.ui.dashboard.DashboardViewModel" />
+            type="com.limprove.tinygithub.presentation.dashboard.DashboardViewModel" />
 
         <variable
             name="adapter"
-            type="com.limprove.tinygithub.ui.dashboard.adapters.RepoAdapter" />
+            type="com.limprove.tinygithub.presentation.dashboard.adapters.RepoAdapter" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.dashboard.DashboardActivity">
+        tools:context=".presentation.dashboard.DashboardActivity">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/user_name"
@@ -35,6 +35,17 @@
             android:text="@{viewModel.accountEmail}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/refresh_button"
+            style="@style/Github.Button.Refresh_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onRefreshClicked()}"
+            android:text="@string/refresh"
+            android:textAppearance="@style/Github.Fonts.Subtitle2"
+            app:layout_constraintEnd_toStartOf="@id/logout"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logout"
@@ -55,14 +66,50 @@
             android:background="@drawable/shape_search_view_background"
             app:iconifiedByDefault="false"
             app:layout_constraintTop_toBottomOf="@id/user_email"
-            app:queryBackground="@android:color/transparent" />
+            app:queryBackground="@android:color/transparent"
+            app:searchViewListener="@{viewModel.listener}" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/search_view"
+            app:setTabLayoutListener="@{viewModel.tabSelectedListener}">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_item_search_api"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_in_github" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_item_search_db"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saved" />
+
+        </com.google.android.material.tabs.TabLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_repos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="vertical"
             app:adapter="@{adapter}"
-            app:layout_constraintTop_toBottomOf="@id/search_view" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/tabs" />
+
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_repos"
+            app:viewVisibility="@{viewModel.isLoading}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

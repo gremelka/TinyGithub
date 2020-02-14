@@ -12,6 +12,11 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="backgroundTint">@color/colorAccent</item>
     </style>
+
+    <style name="Github.Button.Refresh_Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
     
     <style name="TextAppearance.Github.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textColor">?android:attr/textColorPrimary</item>

@@ -10,6 +10,22 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="logout">Logout</string>
+    <string name="wait">Wait</string>
     <string name="logout_and_forget">Logout and forget</string>
     <string name="auth_failed">Authentication failed</string>
+    <string name="retry">Retry</string>
+    <string name="search_in_github">Search in Github</string>
+    <string name="saved">Saved</string>
+    <string name="repository_name">Repository name:</string>
+    <string name="owner_name">Owner name:</string>
+    <string name="stars">Stars:</string>
+    <string name="created">Created:</string>
+    <string name="description">Description:</string>
+    <string name="no_description">No description</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="forget_user">Forget user</string>
+    <string name="refresh">Refresh</string>
+    <string name="update_data">Data is updated</string>
+    <string name="no_date">No date</string>
 </resources>

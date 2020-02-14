@@ -37,9 +37,12 @@ ext {
 
     //App dependencies
     authVersion = '17.0.0'
+    autoValueVersion = '1.5.2'
     constraintLayoutVersion = '2.0.0-beta4'
     daggerVersion = '2.25.2'
+    glideVersion = '4.9.0'
     gsonVersion = '2.8.2'
+    jodaVersion = '2.9.6'
     lifecycleVersion = '2.2.0'
     materialVersion = '1.2.0-alpha04'
     okHttpVersion = '4.3.1'
