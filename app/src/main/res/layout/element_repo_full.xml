@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.limprove.tinygithub.presentation.detail.DetailViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_view_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:setAvatarImage="@{viewModel.repo.owner.avatarUrl}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/repo_name_full_text"
+            app:layout_constraintTop_toBottomOf="@id/image_view_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:text="@string/repository_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/repo_name_full"
+            android:text="@{viewModel.repo.name}"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/image_view_avatar"
+            app:layout_constraintStart_toEndOf="@id/repo_name_full_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/owner_name_text"
+            app:layout_constraintTop_toBottomOf="@id/repo_name_full_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:text="@string/owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/owner_name"
+            android:textSize="20sp"
+            android:text="@{viewModel.repo.owner.login}"
+            app:layout_constraintTop_toBottomOf="@id/repo_name_full"
+            app:layout_constraintStart_toEndOf="@id/owner_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/star_text"
+            app:layout_constraintTop_toBottomOf="@id/owner_name_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:text="@string/stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/star"
+            android:textSize="20sp"
+            android:text="@{String.valueOf(viewModel.repo.stars)}"
+            app:layout_constraintTop_toBottomOf="@id/owner_name"
+            app:layout_constraintStart_toEndOf="@id/star_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/forks_text"
+            app:layout_constraintTop_toBottomOf="@id/star_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:text="@string/stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/forks"
+            android:textSize="20sp"
+            android:text="@{String.valueOf(viewModel.repo.forks)}"
+            app:layout_constraintTop_toBottomOf="@id/star"
+            app:layout_constraintStart_toEndOf="@id/forks_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/created_text"
+            app:layout_constraintTop_toBottomOf="@id/forks_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:text="@string/created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/created"
+            android:textSize="20sp"
+            app:formatDate="@{viewModel.repo.date}"
+            app:layout_constraintTop_toBottomOf="@id/forks"
+            app:layout_constraintStart_toEndOf="@id/created_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_text"
+            app:layout_constraintTop_toBottomOf="@id/created_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:text="@string/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description"
+            android:textSize="20sp"
+            android:text="@{viewModel.repo.description == null ? @string/no_description : viewModel.repo.description}"
+            app:layout_constraintTop_toBottomOf="@id/created"
+            app:layout_constraintStart_toEndOf="@id/description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> viewModel.insertRepo()}"
+            android:id="@+id/button_save"
+            android:text="@string/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

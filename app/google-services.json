@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "134589149671",
+    "firebase_url": "https://limprove-tinygithub.firebaseio.com",
+    "project_id": "limprove-tinygithub",
+    "storage_bucket": "limprove-tinygithub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134589149671:android:616ef2889d699312b20d42",
+        "android_client_info": {
+          "package_name": "com.limprove.tinygithub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134589149671-l0qfcrcg7e1v1ou8pal5ldf8v1g22f01.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.limprove.tinygithub",
+            "certificate_hash": "e2c8fea352dbef41f7fe1c3dfcb9bf9aa7c94c04"
+          }
+        },
+        {
+          "client_id": "134589149671-k8gdlivor20ommddm0laabqaumbipahv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd4BF5SKI245XHxkPEZZPZiiPSkpwcBmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134589149671-k8gdlivor20ommddm0laabqaumbipahv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
