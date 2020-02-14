@@ -37,10 +37,12 @@ public final class DashboardViewModel extends ViewModel {
     private RepoDataSourceFactory factory;
 
     @Inject
-    public DashboardViewModel(FirebaseUser user, RepoRepository repository) {
+    public DashboardViewModel(RepoRepository repository) {
         this.repository = repository;
-        accountName.set(user.getDisplayName());
-        accountEmail.set(user.getEmail());
+        accountName.set("Some name");
+        accountEmail.set("Some email");
+        /*accountName.set(user.getDisplayName());
+        accountEmail.set(user.getEmail());*/
     }
 
     LiveData<PagedList<Repo>> getRepos() {

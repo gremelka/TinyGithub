@@ -15,15 +15,16 @@
         android:theme="@style/Github"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".presentation.dashboard.DashboardActivity" />
-        <activity
-            android:name=".presentation.login.LoginActivity"
+            android:name=".presentation.dashboard.DashboardActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.login.LoginActivity">
         </activity>
 
         <service android:name="com.google.firebase.components.ComponentDiscoveryService" />
